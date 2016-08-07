@@ -1,7 +1,7 @@
 Rekit-example
 ======
 This is a simple forum application by Rekit. It demostrates how to use features, pages, actions and especially async-actions etc.
-It uses [leancloud storage](https://leancloud.cn) for data persistence.
+It uses [leancloud](https://leancloud.cn) for data persistence.
 
 
 Usage
