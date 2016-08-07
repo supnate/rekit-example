@@ -1,0 +1,47 @@
+@import './mixins.less';
+
+form {
+  max-width: 400px;
+  min-width: 100px;
+}
+
+.form-row {
+  margin-top: 20px;
+  label {
+    display: block;
+    color: #666;
+    span {
+      color: #f90;
+    }
+  }
+  .error-tip {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 150%;
+    color: red;
+  }
+  .success-tip {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 150%;
+    color: green;
+  }
+  input, textarea {
+    margin-top: 8px;
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+  }
+  input {
+    padding: 8px;
+  }
+  textarea {
+    padding: 8px;
+    height: 100px;
+    line-height: 150%;
+  }
+  button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
