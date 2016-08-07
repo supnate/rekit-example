@@ -6,9 +6,11 @@ import {
 
 export default {
   path: 'topic',
+  name: '',
+  siteIndexRoute: { component: ListPage },
   childRoutes: [
-    { path: 'add', component: EditPage },
-    { path: 'list-page', component: ListPage },
-    { path: ':topicId', component: ViewPage },
+    { path: '/', component: ListPage, name: 'Home' },
+    { path: 'add', component: EditPage, name: 'New Topic' },
+    { path: ':topicId', component: ViewPage, hideInNav: true, },
   ],
 };

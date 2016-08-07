@@ -66,7 +66,7 @@ export function fetchCommentList(topicId) {
     const promise = new Promise((resolve, reject) => {
       const query = new lean.Query('Comment');
       const topic = lean.Object.createWithoutData('Topic', topicId);
-      query.limit(50);
+      query.limit(500);
       query.equalTo('topic', topic);
       query.descending('createdAt');
       query.find().then(res => {

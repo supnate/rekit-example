@@ -29,14 +29,18 @@ export default class CommentList extends Component {
   }
 
   render() {
-    const { listData, fetchCommentListPending } = this.props.commentState;
+    const { fetchCommentListPending } = this.props.commentState;
+    let listData = [];
+    if (this.props.commentState.topicId === this.props.topicId) {
+      listData = this.props.commentState.listData || [];
+    }
     return (
       <div className="comment-comment-list">
-        <h4>Comments</h4>
+        <h4>Comments ({listData.length})</h4>
         {fetchCommentListPending && <div className="loading">Loading</div>}
         <ul>
           {
-            listData && listData.map(item => (
+            listData.map(item => (
               <li key={item.id}>
                 <div className="author-date">
                   <span className="author">{item.get('author')}</span>
