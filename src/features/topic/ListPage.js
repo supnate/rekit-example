@@ -18,15 +18,15 @@ class ListPage extends Component {
   }
 
   handleNewTopicBtnClick() {
-    browserHistory.push('/topic/add');
+    browserHistory.push('/rekit-example/topic/add');
   }
 
   handleRowClick(topicId) {
-    browserHistory.push(`/topic/${topicId}`);
+    browserHistory.push(`/rekit-example/topic/${topicId}`);
   }
 
   render() {
-    const { fetchTopicListPending } = this.props.topic;
+    const { fetchTopicListPending, fetchTopicListError } = this.props.topic;
     return (
       <div className="topic-list-page">
         <h1>
@@ -34,7 +34,7 @@ class ListPage extends Component {
           <button className="btn-new-topic" onClick={memobind(this, 'handleNewTopicBtnClick')}>+ New Topic</button>
         </h1>
         {fetchTopicListPending && <div className="loading">Loading....</div>}
-
+        {fetchTopicListError && <div className="error-tip">Failed to load topic list: {fetchTopicListError.message || fetchTopicListError.toString()}</div>}
         <ul className="topic-list">
           {
             this.props.topic.listData.map(item => (

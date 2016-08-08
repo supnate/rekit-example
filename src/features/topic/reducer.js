@@ -41,6 +41,7 @@ export default function reducer(state = initialState, action) {
     case SAVE_TOPIC_FAILURE:
       return {
         ...state,
+        saveTopicPending: false,
         saveTopicError: action.data.error,
       };
 
@@ -68,6 +69,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_TOPIC_LIST_FAILURE:
       return {
         ...state,
+        fetchTopicListPending: false,
         fetchTopicListError: action.data.error,
       };
 

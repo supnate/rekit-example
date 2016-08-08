@@ -58,7 +58,7 @@ class EditPage extends Component {
       title: this.state.title,
       content: this.state.content,
     }).then(() => {
-      browserHistory.push('/');
+      browserHistory.push('/rekit-example');
     });
   }
 
