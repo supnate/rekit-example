@@ -12,6 +12,7 @@ export default [
     childRoutes: [
       topicRoute,
       commentRoute,
+      { path: '*', name: '404', component: Page404, hideInNav: true },
     ],
   },
   { path: '*', name: '404', component: Page404, hideInNav: true },

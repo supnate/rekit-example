@@ -22,4 +22,4 @@ npm install
 npm start
 ```
 
-Then access http://localhost:6090
+Then access http://localhost:6090/rekit-example
