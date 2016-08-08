@@ -13,8 +13,8 @@ export default class App extends Component {
           <div className="side-bar">
             <h2><a href="https://github.com/supnate/rekit-example">Rekit Example</a></h2>
             <ul>
-              <li><Link to="/">Topic List</Link></li>
-              <li><Link to="/topic/add">New Topic</Link></li>
+              <li><Link to="/rekit-example">Topic List</Link></li>
+              <li><Link to="/rekit-example/topic/add">New Topic</Link></li>
             </ul>
           </div>
           <div className="page-container">
