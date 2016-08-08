@@ -9,8 +9,8 @@ export default {
   name: '',
   siteIndexRoute: { component: ListPage },
   childRoutes: [
-    { path: '/', component: ListPage, name: 'Home' },
+    { path: '/', component: ListPage, name: 'Topic List' },
     { path: 'add', component: EditPage, name: 'New Topic' },
-    { path: ':topicId', component: ViewPage, hideInNav: true, },
+    { path: ':topicId', component: ViewPage },
   ],
 };

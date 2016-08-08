@@ -29,11 +29,11 @@ class ListPage extends Component {
     const { fetchTopicListPending } = this.props.topic;
     return (
       <div className="topic-list-page">
-        {fetchTopicListPending && <div className="loading">Loading....</div>}
         <h1>
           Topics
           <button className="btn-new-topic" onClick={memobind(this, 'handleNewTopicBtnClick')}>+ New Topic</button>
         </h1>
+        {fetchTopicListPending && <div className="loading">Loading....</div>}
 
         <ul className="topic-list">
           {

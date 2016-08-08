@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import routeConfig from '../common/routeConfig';
-import SimpleNav from '../components/SimpleNav';
+import { Link } from 'react-router';
 
 export default class App extends Component {
   static propTypes = {
@@ -12,7 +11,11 @@ export default class App extends Component {
       <div className="app">
         <div className="main-container">
           <div className="side-bar">
-            <SimpleNav routes={routeConfig} />
+            <h2><a href="https://github.com/supnate/rekit-example">Rekit Example</a></h2>
+            <ul>
+              <li><Link to="/">Topic List</Link></li>
+              <li><Link to="/topic/add">New Topic</Link></li>
+            </ul>
           </div>
           <div className="page-container">
             {this.props.children}

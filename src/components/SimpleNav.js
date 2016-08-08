@@ -15,7 +15,7 @@ export default class SimpleNav extends PureComponent {
     return (
       <ul>
         {
-          items.filter(item => !item.hideInNav).reduce((prev, item) => {
+          items.reduce((prev, item) => {
             let path;
             if (/^\//.test(item.path)) {
               path = item.path;
@@ -24,7 +24,7 @@ export default class SimpleNav extends PureComponent {
             } else {
               path = `${basePath}/${item.path}`;
             }
-            prev.push(<li key={path}><Link to={path}>{typeof item.name === undefined ? item.path : item.name}</Link></li>);
+            prev.push(<li key={path}><Link to={path}>{item.name || item.path}</Link></li>);
 
             if (item.childRoutes && item.childRoutes.length) {
               prev.push(<li key={`${path}_wrapper`}>{this.renderLinks(item.childRoutes, path)}</li>);
