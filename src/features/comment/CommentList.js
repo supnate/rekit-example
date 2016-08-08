@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
-export default class CommentList extends Component {
+export default class CommentList extends PureComponent {
   static propTypes = {
     topicId: PropTypes.string.isRequired,
     fetchCommentList: PropTypes.func.isRequired,
