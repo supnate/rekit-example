@@ -53,6 +53,7 @@ export default class CommentList extends Component {
             ))
           }
         </ul>
+        {listData.length === 0 && <div className="no-comment-tip">No comment yet.</div>}
       </div>
     );
   }

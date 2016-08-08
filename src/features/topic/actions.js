@@ -59,7 +59,7 @@ export function fetchTopicList() {
     });
     const promise = new Promise((resolve, reject) => {
       const query = new lean.Query('Topic');
-      query.limit(10);
+      query.limit(50);
       query.descending('createdAt');
       query.find().then(res => {
         dispatch({
