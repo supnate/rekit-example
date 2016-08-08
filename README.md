@@ -3,6 +3,16 @@ Rekit-example
 This is a simple forum application by Rekit. It demostrates how to use features, pages, actions and especially async-actions etc.
 It uses [leancloud](https://leancloud.cn) for data persistence.
 
+[See the example](https://supnate.github.io/rekit-example)
+======
+
+Key Demo Features of Rekit
+======
+* Async actions to load list data.
+* Redirect to list page when successfully adding a topic.
+* Use pure component to load comment list. Pass necessary props to it.
+* Define routes/actions/components/pages/reducers in the feature folder.
+* etc...
 
 Usage
 ======
