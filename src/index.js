@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -12,7 +13,6 @@ const store = configStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 const root = document.createElement('div');
-root.className = 'react-root';
 document.body.appendChild(root);
 
 render(

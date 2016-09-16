@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import memobind from 'memobind';
-import * as actions from './actions';
+import * as actions from './redux/actions';
 
-class EditPage extends Component {
+export class EditPage extends Component {
   static propTypes = {
     topic: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
@@ -104,12 +104,14 @@ class EditPage extends Component {
   }
 }
 
+/* istanbul-ignore-next */
 function mapStateToProps(state) {
   return {
     topic: state.topic,
   };
 }
 
+/* istanbul-ignore-next */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({ ...actions }, dispatch)

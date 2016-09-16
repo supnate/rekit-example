@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const devConfig = require('../webpack.dev.config');
 const srcPath = path.join(__dirname, '../src');
-const tmpPath = path.join(srcPath, './_tmp');
+const tmpPath = path.join(srcPath, './.tmp');
 const manifestPath = path.join(tmpPath, 'vendors-manifest.json');
 
 const PORT = require('../package.json').webpackDevServerPort;
@@ -27,6 +27,7 @@ function startDevServer() {
     contentBase: devConfig.devServer.contentBase,
     hot: true,
     noInfo: false,
+    quiet: true,
     https: false,
     historyApiFallback: true,
   }).listen(PORT, (err) => {
@@ -54,6 +55,7 @@ if (
   !shell.test('-e', manifestPath) // dll doesn't exist
   || require(manifestPath).name !== dllName // dll hash has changed
 ) {
+  delete require.cache[manifestPath]; // force reload the new manifest
   console.log('vendors have changed, rebuilding dll...');
   // build dll
   dllConfig.output = {
@@ -82,4 +84,3 @@ if (
   console.log('vendors dll is up to date, no need to rebuild.');
   startDevServer();
 }
-

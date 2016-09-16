@@ -5,6 +5,11 @@
     'document': true,
     'window': true
   },
+  'settings': {
+    'import/resolver': {
+      'babel-module': {}
+    }
+  },
   'rules': {
     'guard-for-in': 0,
     'max-len': 0,
@@ -13,6 +18,7 @@
     'global-require': 0,
     'new-cap': 0,
     'react/jsx-filename-extension': 0,
-    'jsx-a11y/label-has-for': 0
+    'jsx-a11y/label-has-for': 0,
+    'import/prefer-default-export': 0
   }
 }

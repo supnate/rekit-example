@@ -5,12 +5,11 @@ import {
 } from './index';
 
 export default {
-  path: 'topic',
+  path: '',
   name: '',
-  siteIndexRoute: { component: ListPage },
   childRoutes: [
-    { path: '', component: ListPage, name: 'Topic List' },
-    { path: 'add', component: EditPage, name: 'New Topic' },
-    { path: ':topicId', component: ViewPage },
+    { path: '', component: ListPage, name: 'Topic List', isIndex: true },
+    { path: 'topic/add', component: EditPage, name: 'New Topic' },
+    { path: 'topic/:topicId', component: ViewPage },
   ],
 };

@@ -1,5 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
+const dashboard = new Dashboard();
 
 module.exports = {
   devtool: 'eval',
@@ -22,7 +26,11 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       ENV: '"dev"',
-    })
+      'process.env': {
+        NODE_ENV: JSON.stringify('dev'),
+      }
+    }),
+    new DashboardPlugin(dashboard.setData)
   ],
   module: {
     loaders: [

@@ -3,12 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import memobind from 'memobind';
-import * as actions from './actions';
-import { saveComment, fetchCommentList, dismissFetchCommentListError, dismissSaveCommentError } from '../comment/actions';
+import * as actions from './redux/actions';
+import { saveComment, fetchCommentList, dismissFetchCommentListError, dismissSaveCommentError } from '../comment/redux/actions';
 
 import { CommentForm, CommentList } from '../comment';
 
-class ViewPage extends Component {
+export class ViewPage extends Component {
   static propTypes = {
     topic: PropTypes.object.isRequired,
     comment: PropTypes.object.isRequired,
@@ -17,7 +17,7 @@ class ViewPage extends Component {
   };
 
   componentWillMount() {
-    this.props.actions.getTopic(this.props.params.topicId);
+    // this.props.actions.getTopic(this.props.params.topicId);
   }
 
   componentWillUnmount() {
@@ -100,6 +100,7 @@ class ViewPage extends Component {
   }
 }
 
+/* istanbul-ignore-next */
 function mapStateToProps(state) {
   return {
     topic: state.topic,
@@ -107,6 +108,7 @@ function mapStateToProps(state) {
   };
 }
 
+/* istanbul-ignore-next */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({

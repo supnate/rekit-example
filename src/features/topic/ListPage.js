@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import memobind from 'memobind';
-import * as actions from './actions';
+import * as actions from './redux/actions';
 
-class ListPage extends Component {
+export class ListPage extends Component {
   static propTypes = {
     topic: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
@@ -27,6 +27,7 @@ class ListPage extends Component {
 
   render() {
     const { fetchTopicListPending, fetchTopicListError } = this.props.topic;
+
     return (
       <div className="topic-list-page">
         <h1>
@@ -56,12 +57,14 @@ class ListPage extends Component {
   }
 }
 
+/* istanbul-ignore-next */
 function mapStateToProps(state) {
   return {
     topic: state.topic,
   };
 }
 
+/* istanbul-ignore-next */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({ ...actions }, dispatch)
