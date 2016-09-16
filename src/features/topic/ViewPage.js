@@ -17,7 +17,7 @@ export class ViewPage extends Component {
   };
 
   componentWillMount() {
-    // this.props.actions.getTopic(this.props.params.topicId);
+    this.props.actions.getTopic(this.props.params.topicId);
   }
 
   componentWillUnmount() {
