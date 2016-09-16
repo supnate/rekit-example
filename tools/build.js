@@ -25,7 +25,7 @@ const timestamp = require('crypto')
 const lines = helpers.getLines(path.join(__dirname, '../src/index.html'));
 helpers.removeLines(lines, '/.tmp/vendors.dll.js');
 let indexHtml = lines.join('\n');
-indexHtml = indexHtml.replace('/static/main.bundle.js', `/static/main.bundle.${timestamp}.js`);
+indexHtml = indexHtml.replace('/static/main.bundle.js', `/rekit-example/static/main.bundle.${timestamp}.js`);
 shell.ShellString(indexHtml).to(path.join(buildFolder, 'index.html'));
 
 console.log('Start building...');
