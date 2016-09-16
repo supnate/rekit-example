@@ -28,7 +28,7 @@ export function getTopic(topicId) {
         });
         reject();
       });
-    }).catch(() => {});
+    });
 
     return promise;
   };
@@ -61,6 +61,7 @@ export function reducer(state, action) {
     case GET_TOPIC_FAILURE:
       return {
         ...state,
+        getTopicPending: false,
         getTopicError: action.data.error,
       };
 

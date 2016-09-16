@@ -35,7 +35,7 @@ export function fetchCommentList(topicId) {
         });
         reject(err);
       });
-    }).catch(() => {});
+    });
 
     return promise;
   };

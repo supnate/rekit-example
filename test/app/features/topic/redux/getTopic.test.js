@@ -2,6 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import { expect } from 'chai';
+import lean from 'leancloud-storage';
+import helpers from '../../../helpers';
 
 import {
   GET_TOPIC_BEGIN,
@@ -20,12 +22,18 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('topic/redux/getTopic', () => {
+  before(() => {
+    helpers.beforeMock(lean);
+  });
+
   afterEach(() => {
     nock.cleanAll();
+    helpers.unMock();
   });
 
   it('action should handle getTopic success', () => {
     const store = mockStore({});
+    helpers.mockLeanQuery({}, {});
 
     const expectedActions = [
       { type: GET_TOPIC_BEGIN },
@@ -40,6 +48,7 @@ describe('topic/redux/getTopic', () => {
 
   it('action should handle getTopic failure', () => {
     const store = mockStore({});
+    helpers.mockLeanQueryFailure('some error');
 
     const expectedActions = [
       { type: GET_TOPIC_BEGIN },

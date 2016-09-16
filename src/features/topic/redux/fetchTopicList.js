@@ -30,8 +30,6 @@ export function fetchTopicList() {
         });
         reject(err);
       });
-    }).catch((err) => {
-      console.error(err);
     });
 
     return promise;

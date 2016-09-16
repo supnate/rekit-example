@@ -2,6 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import { expect } from 'chai';
+import lean from 'leancloud-storage';
+import helpers from '../../../helpers';
 
 import {
   SAVE_COMMENT_BEGIN,
@@ -20,19 +22,24 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('comment/redux/saveComment', () => {
+  before(() => {
+    helpers.beforeMock(lean);
+  });
+
   afterEach(() => {
     nock.cleanAll();
+    helpers.unMock();
   });
 
   it('action should handle saveComment success', () => {
     const store = mockStore({});
-
+    helpers.mockLeanSave({});
     const expectedActions = [
       { type: SAVE_COMMENT_BEGIN },
       { type: SAVE_COMMENT_SUCCESS, data: {} },
     ];
 
-    return store.dispatch(saveComment({ error: false }))
+    return store.dispatch(saveComment('id-1', {}))
       .then(() => {
         expect(store.getActions()).to.deep.equal(expectedActions);
       });
@@ -40,6 +47,7 @@ describe('comment/redux/saveComment', () => {
 
   it('action should handle saveComment failure', () => {
     const store = mockStore({});
+    helpers.mockLeanSaveFailure('some error');
 
     const expectedActions = [
       { type: SAVE_COMMENT_BEGIN },

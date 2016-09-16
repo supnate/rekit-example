@@ -30,7 +30,7 @@ export function saveTopic(data) {
         });
         reject();
       });
-    }).catch(() => {});
+    });
 
     return promise;
   };

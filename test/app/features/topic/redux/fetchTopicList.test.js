@@ -2,6 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import { expect } from 'chai';
+import lean from 'leancloud-storage';
+import helpers from '../../../helpers';
 
 import {
   FETCH_TOPIC_LIST_BEGIN,
@@ -20,19 +22,25 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('topic/redux/fetchTopicList', () => {
+  before(() => {
+    helpers.beforeMock(lean);
+  });
+
   afterEach(() => {
     nock.cleanAll();
+    helpers.unMock();
   });
 
   it('action should handle fetchTopicList success', () => {
     const store = mockStore({});
+    helpers.mockLeanQuery({}, []);
 
     const expectedActions = [
       { type: FETCH_TOPIC_LIST_BEGIN },
-      { type: FETCH_TOPIC_LIST_SUCCESS, data: {} },
+      { type: FETCH_TOPIC_LIST_SUCCESS, data: [] },
     ];
 
-    return store.dispatch(fetchTopicList({ error: false }))
+    return store.dispatch(fetchTopicList())
       .then(() => {
         expect(store.getActions()).to.deep.equal(expectedActions);
       });
@@ -40,13 +48,14 @@ describe('topic/redux/fetchTopicList', () => {
 
   it('action should handle fetchTopicList failure', () => {
     const store = mockStore({});
+    helpers.mockLeanQueryFailure('some error');
 
     const expectedActions = [
       { type: FETCH_TOPIC_LIST_BEGIN },
       { type: FETCH_TOPIC_LIST_FAILURE, data: { error: 'some error' } },
     ];
 
-    return store.dispatch(fetchTopicList({ error: true }))
+    return store.dispatch(fetchTopicList())
       .catch(() => {
         expect(store.getActions()).to.deep.equal(expectedActions);
       });

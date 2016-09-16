@@ -24,7 +24,7 @@ export function saveComment(topicId, data) {
           data: res,
         });
         resolve();
-      }).catch(err => {
+      }, err => {
         dispatch({
           type: SAVE_COMMENT_FAILURE,
           data: {

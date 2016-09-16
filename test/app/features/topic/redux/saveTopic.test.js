@@ -2,6 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import { expect } from 'chai';
+import lean from 'leancloud-storage';
+import helpers from '../../../helpers';
 
 import {
   SAVE_TOPIC_BEGIN,
@@ -20,19 +22,25 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('topic/redux/saveTopic', () => {
+  before(() => {
+    helpers.beforeMock(lean);
+  });
+
   afterEach(() => {
     nock.cleanAll();
+    helpers.unMock();
   });
 
   it('action should handle saveTopic success', () => {
     const store = mockStore({});
+    helpers.mockLeanSave({});
 
     const expectedActions = [
       { type: SAVE_TOPIC_BEGIN },
       { type: SAVE_TOPIC_SUCCESS, data: {} },
     ];
 
-    return store.dispatch(saveTopic({ error: false }))
+    return store.dispatch(saveTopic())
       .then(() => {
         expect(store.getActions()).to.deep.equal(expectedActions);
       });
@@ -40,13 +48,14 @@ describe('topic/redux/saveTopic', () => {
 
   it('action should handle saveTopic failure', () => {
     const store = mockStore({});
+    helpers.mockLeanSaveFailure('some error');
 
     const expectedActions = [
       { type: SAVE_TOPIC_BEGIN },
       { type: SAVE_TOPIC_FAILURE, data: { error: 'some error' } },
     ];
 
-    return store.dispatch(saveTopic({ error: true }))
+    return store.dispatch(saveTopic())
       .catch(() => {
         expect(store.getActions()).to.deep.equal(expectedActions);
       });
