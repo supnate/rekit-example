@@ -1,3 +1,5 @@
+## NOTE: This example is created by Rekit 1.0. You may want to checkout [Rekit-portal](https://github.com/supnate/rekit-portal) for how to use Rekit 2.0.
+
 Rekit-example
 ======
 This is a simple forum application by [Rekit](https://github.com/supnate/rekit). It demostrates how to use features, pages, actions and especially async-actions etc.
